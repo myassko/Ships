@@ -18,7 +18,8 @@ namespace Ships
         {
             this.tunnel = new List<Ship>();
         }
-        public bool TryToAddShip(Ship ship)
+
+        public void AddShip(Ship ship)
         {
 
             if (shipCounter < maxShipsInTunnel)
@@ -26,10 +27,29 @@ namespace Ships
                 tunnel.Add(ship);
                 shipCounter++;
                 MessageBox.Show("Корабль прибыл в порт");
-                return true;
+                //return true;
             }
-            return false;
+            MessageBox.Show("Мест нет");
+            //return false;
         }
 
+        public Ship GetShip(Ships shipType)
+        {
+            if (shipCounter > minShipsInTunnel)
+            {
+                foreach (var ship in tunnel)
+                {
+                    if (ship.Type == shipType)
+                    {
+                        shipCounter--;
+                        return ship;
+                    }
+                }
+                MessageBox.Show("Такого корабля нет");
+            }
+            else
+                MessageBox.Show("Кораблей в тоннеле нет");
+            return null;
+        }
     }
 }

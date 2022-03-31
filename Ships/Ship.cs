@@ -8,24 +8,24 @@ namespace Ships
 {
     class Ship
     {
-        public int count { get; private set; }
-        public Ships type { get; }
-        public Sizes size { get; }
+        public int Count { get; private set; }
+        public Ships Type { get; }
+        public Sizes Size { get; }
 
         public Ship(Ships typeShip, Sizes sizeShip)
         {
-            type = typeShip;
-            size = sizeShip;
+            Type = typeShip;
+            Size = sizeShip;
         }
 
         public void Add(int count)
         {
-            this.count += count;
+            this.Count += count;
         }
 
         public bool CheckCount()
         {
-            return count <= (int)size;
+            return Count <= (int)Size;
         }
     }
 }
