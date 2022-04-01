@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -19,6 +20,8 @@ namespace Ships
             this.BackColor = Color.White;
             this.MouseMove += new MouseEventHandler(mouseMove);
             this.MouseClick += new MouseEventHandler(mouseRightClick);
+
+           
         }
 
         private void mouseRightClick(object sender, MouseEventArgs e)
@@ -38,11 +41,11 @@ namespace Ships
         private void Form1Load(object sender, EventArgs e)
         {
 
-            MessageBox.Show("Форма загрузилась успешно");
+          //  MessageBox.Show("Форма загрузилась успешно");
             var tunel = new DataGridView();
             tunel.Location = new Point(220, 110);
-            tunel.Size = new Size(300, 300);
-            tunel.BackgroundColor = Color.Black;
+            tunel.Size = new Size(300,70);
+            tunel.BackgroundColor = Color.White;
             tunel.BorderStyle = BorderStyle.None;
             tunel.MouseClick += new MouseEventHandler(GridClick);
             int n = 1;
@@ -59,6 +62,7 @@ namespace Ships
             tunel.ColumnHeadersVisible = false;
             tunel.AllowUserToAddRows = false;
             tunel.Rows.Add("Banana 100", "Clothe 50", "Bread 50", "Banana 10", "Banana 100");
+           // tunel.Rows.Add("Banana 100", "Clothe 50", "Bread 50", "Banana 10", "Banana 100");
             //tunel.Rows[0].Visible = false;
             int a = 20;
             //for (int i = 0; i < 10; i++)
@@ -67,7 +71,7 @@ namespace Ships
             //}
 
             this.Controls.Add(tunel);
-            MessageBox.Show("Датагрид загрузился успешно");
+            //MessageBox.Show("Датагрид загрузился успешно");
         }
 
         private void GridClick(object sender, MouseEventArgs e)
@@ -79,5 +83,28 @@ namespace Ships
         {
             currObject = sender;
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            int a = 0;
+            int b = 5;
+            label1.Text = "5";
+            Thread.Sleep(1000);
+            label1.Text = "10";
+            Thread.Sleep(1000);
+            label1.Text = "15";
+            Thread.Sleep(1000);
+            label1.Text = "20";
+            Thread.Sleep(100);
+            label1.Text = "25";
+            Thread.Sleep(1000);
+            label1.Text = "30";
+            Thread.Sleep(1000);
+            label1.Text = "35";
+        }
+
+        
+
+       
     }
 }
