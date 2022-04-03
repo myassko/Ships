@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Ships
 {
-    enum Ships
+    public enum Ships
     {
         Banana,
         Clothe,
         Bread
     }
-    enum Sizes
+    public enum Sizes
     {
         Small = 10,
         Average = 50,

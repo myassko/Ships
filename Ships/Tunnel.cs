@@ -9,14 +9,16 @@ namespace Ships
 {
     class Tunnel
     {
-        private List<Ship> tunnel;
+        public List<Ship> port { get; }
+        public DataGridView dataGrid { get; set; }
         private int minShipsInTunnel = 0;
         private int maxShipsInTunnel = 5;
         private int shipCounter = 0;
 
-        public Tunnel()
+        public Tunnel(DataGridView dataGrid)
         {
-            this.tunnel = new List<Ship>();
+            this.port = new List<Ship>();
+            this.dataGrid = dataGrid;
         }
 
         public void AddShip(Ship ship)
@@ -24,20 +26,32 @@ namespace Ships
 
             if (shipCounter < maxShipsInTunnel)
             {
-                tunnel.Add(ship);
+                port.Add(ship);
                 shipCounter++;
-                MessageBox.Show("Корабль прибыл в порт");
+                //MessageBox.Show("Корабль прибыл в порт");
                 //return true;
             }
-            MessageBox.Show("Мест нет");
+            else
+            {
+                MessageBox.Show("Мест нет");
+            }
+
             //return false;
         }
-
+        public Ship GetShip()
+        {
+                var random = new Random();
+                return port[random.Next(port.Count)];
+                
+            
+            
+            
+        }
         public Ship GetShip(Ships shipType)
         {
             if (shipCounter > minShipsInTunnel)
             {
-                foreach (var ship in tunnel)
+                foreach (var ship in port)
                 {
                     if (ship.Type == shipType)
                     {
