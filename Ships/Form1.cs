@@ -21,6 +21,7 @@ namespace Ships
         {
             InitializeComponent();
             this.BackColor = Color.White;
+            //НЕ ЗНАЕТ КАК РАБОТАЕТ
             #if DEBUG
             TopMost = false;
             #endif
@@ -47,32 +48,27 @@ namespace Ships
             // dataGridTunnel.Columns.Add("column-5", "Header column - 5");
             // dataGridTunnel.Rows.Add("Banana 100", "Clothe 50", "Bread 50", "Banana 10", "Banana 100");
 
-            //// this.Controls.Add(dataGridTunnel);
+            // this.Controls.Add(dataGridTunnel);
             //return new Tunnel(dataGridTunnel);
             return new Tunnel(new DataGridView());
 
         }
-
+        //При загрузке формы создаем тоннель
         private void Form1Load(object sender, EventArgs e)
         {
             tunnel = CreateTunel();
-
         }
-
-
-
+        //При нажатии на кнопку генерирует случайным образом кораблик
         private void ShipGenerator_Click(object sender, EventArgs e)
         {
 
-            ship = new Ship();
+            ship = new Ship();//Создали кораблик
             Console.WriteLine($"{ship.Type} {ship.Size}");
             Console.WriteLine("/////////////");
-            tunnel.AddShip(ship);
+            tunnel.AddShip(ship);//Добавили кораблик в тоннель
            // z++;
-            this.Controls.Add(ship.Picture);
+            this.Controls.Add(ship.Picture);//Показали кораблик на форме
         }
-
-
 
         public class Test1
         {
@@ -86,7 +82,7 @@ namespace Ships
                 Ship = ship;
             }
         }
-
+        //Отправляем кораблик к причалу с бананчикам
         private void BananaPath_Click(object sender, EventArgs e)
         {
             BananaPath.Enabled = false;
@@ -98,6 +94,7 @@ namespace Ships
 
 
         }
+        //Отправляем кораблик к причалу с одеждой
         private void ClothesPath_Click(object sender, EventArgs e)
         {
             ClothesPath.Enabled = false;
@@ -106,7 +103,7 @@ namespace Ships
             var a = new Test1(ClothesCount, ClothesJetty, ship1);
             thread.Start(a);
         }
-
+        //Отправляем кораблик к причалу с хлебом
         private void BreadPath_Click(object sender, EventArgs e)
         {
             BreadPath.Enabled = false;
@@ -115,7 +112,7 @@ namespace Ships
             var a = new Test1(BreadCount, BreadJetty, ship1);
             thread.Start(a);
         }
-
+        //Позваляет кораблику двигаться по форме
         public  void Move(object button)
         {
             CheckForIllegalCrossThreadCalls = false;
@@ -147,7 +144,7 @@ namespace Ships
             }
             ship.Picture.Location = new Point(ship.Picture.Location.X, but.Location.Y);
         }
-
+        
         public void MoveLeft(Button but, Ship ship)
         {
             while (but.Location.X + ship.Picture.Size.Width < ship.Picture.Location.X)
@@ -201,8 +198,8 @@ namespace Ships
                     return null;
             }
         }
-       
 
+       //Показывает текущую вместимость корабля(счетчик)
         public  void Counter(Label lab,Ship ship)
         {
                      
@@ -218,23 +215,19 @@ namespace Ships
                 {
                     lab.Text = Convert.ToString(a);
                     a++;
-                    Thread.Sleep(100);
+                   Thread.Sleep(100);
                 }
                 MoveRight(ship1);
                 Thread.Sleep(1000);
                 lab.Text = "0";
             //this.Controls.Remove(ship.Picture);
             ship.DeleatePicture();
-            tunnel.port.Remove(ship);
-           
-                
+            tunnel.port.Remove(ship); 
                 //z--;
             //}
-
-            
-          
             //}
         }
+
         public class Test
         {
             public Label Lab;
@@ -246,6 +239,7 @@ namespace Ships
             }
         }
 
+        //ПАЛОЧКА НИКТО НЕ ЗНАЕТ КАК РАБОТАЕТ ВЫРУЧАЛОЧКА
         private void MagicStick_Click(object sender, EventArgs e)
         {
             BananaPath.Enabled = true;

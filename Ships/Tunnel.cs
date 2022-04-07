@@ -14,13 +14,13 @@ namespace Ships
         private int minShipsInTunnel = 0;
         private int maxShipsInTunnel = 5;
         private int shipCounter = 0;
-
+        //Создаем тоннель
         public Tunnel(DataGridView dataGrid)
         {
             this.port = new List<Ship>();
             this.dataGrid = dataGrid;
         }
-
+        //Добавляем корабль в тоннель
         public void AddShip(Ship ship)
         {
 
@@ -38,15 +38,14 @@ namespace Ships
 
             //return false;
         }
+
+        //Выбираем 1 случайный корабль
         public Ship GetShip()
         {
                 var random = new Random();
                 return port[random.Next(port.Count)];
-                
-            
-            
-            
         }
+        //Выбираем корабль нужного типа
         public Ship GetShip(Ships shipType)
         {
             if (shipCounter > minShipsInTunnel)

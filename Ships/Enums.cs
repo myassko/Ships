@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace Ships
 {
+    //Все типы кораблей
     public enum Ships
     {
         Banana,
         Clothe,
         Bread
     }
+    //Все размеры корабли
     public enum Sizes
     {
         Small = 10,

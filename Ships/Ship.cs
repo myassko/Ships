@@ -8,17 +8,19 @@ using System.Windows.Forms;
 
 namespace Ships
 {
+    
    public class Ship
     {
         public int Count { get; private set; }
         public Ships Type { get; }
         public Sizes Size { get; }
         public PictureBox Picture{ get; set; }
-
+        //Конструкто для создания корабля с случайным типо и размером и нужной картинкой
         public Ship()
         {
             Type = CreateShip();
             Size = CreateSize();
+            //Картинка корабля
             var picture = new PictureBox();
             switch (Type)
             {
@@ -42,26 +44,28 @@ namespace Ships
             picture.Anchor = AnchorStyles.Right | AnchorStyles.Bottom;
             Picture = picture;
         }
+
         public void DeleatePicture()
         {
             Picture.Image = null;
         }
+        //Добавление груза в корабль
         public void Add(int count)
         {
             this.Count += count;
         }
-
+        //Проверка вместительности
         public bool CheckCount()
         {
             return Count <= (int)Size;
         }
-
+        //Рандомное получение размера корабля
         private Sizes CreateSize()
         {
             var a = Enum.GetValues(typeof(Sizes));
             return (Sizes)a.GetValue(new Random().Next(a.Length));
         }
-
+        //Рандомное получение типа корабля
         public static Ships CreateShip()
         {
             var a = Enum.GetValues(typeof(Ships));
